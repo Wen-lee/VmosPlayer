@@ -23,6 +23,26 @@ android:layout_gravity="center"
              >
         </SurfaceView>
         
+     <TextView android:id="@+id/bit_rate" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="45dip"
+          android:layout_marginLeft="5dip"
+          android:text="比特率："
+          android:background="@drawable/black_vmos" />
+          /> 
+     <TextView android:id="@+id/bit_rate_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="45dip"
+          android:layout_marginLeft="95dip"
+          android:text=""
+          android:background="@drawable/black_vmos" />
+     
   <TextView android:id="@+id/initial_time" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content"   

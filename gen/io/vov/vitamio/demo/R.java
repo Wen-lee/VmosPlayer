@@ -46,18 +46,20 @@ public final class R {
         public static final int scrubber_track_holo_dark=0x7f020011;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a001e;
-        public static final int buffer=0x7f0a0017;
-        public static final int button1=0x7f0a001d;
-        public static final int dd=0x7f0a0014;
-        public static final int download_rate=0x7f0a0019;
-        public static final int initial_time=0x7f0a000b;
-        public static final int initial_time_v=0x7f0a000f;
-        public static final int kadun_num=0x7f0a000c;
-        public static final int kadun_num_v=0x7f0a0010;
-        public static final int kadun_time=0x7f0a000d;
-        public static final int kadun_time_v=0x7f0a0011;
-        public static final int load_rate=0x7f0a001a;
+        public static final int action_settings=0x7f0a0020;
+        public static final int bit_rate=0x7f0a000b;
+        public static final int bit_rate_v=0x7f0a000c;
+        public static final int buffer=0x7f0a0019;
+        public static final int button1=0x7f0a001f;
+        public static final int dd=0x7f0a0016;
+        public static final int download_rate=0x7f0a001b;
+        public static final int initial_time=0x7f0a000d;
+        public static final int initial_time_v=0x7f0a0011;
+        public static final int kadun_num=0x7f0a000e;
+        public static final int kadun_num_v=0x7f0a0012;
+        public static final int kadun_time=0x7f0a000f;
+        public static final int kadun_time_v=0x7f0a0013;
+        public static final int load_rate=0x7f0a001c;
         public static final int localaudio=0x7f0a0009;
         public static final int localvideo=0x7f0a0006;
         public static final int localvideo_setsurface=0x7f0a0007;
@@ -66,17 +68,17 @@ public final class R {
         public static final int mediacontroller_seekbar=0x7f0a0004;
         public static final int mediacontroller_time_current=0x7f0a0002;
         public static final int mediacontroller_time_total=0x7f0a0003;
-        public static final int probar=0x7f0a0018;
-        public static final int start=0x7f0a001c;
+        public static final int probar=0x7f0a001a;
+        public static final int start=0x7f0a001e;
         public static final int streamvideo=0x7f0a0008;
-        public static final int sub1=0x7f0a0013;
-        public static final int subtitle_view=0x7f0a0016;
+        public static final int sub1=0x7f0a0015;
+        public static final int subtitle_view=0x7f0a0018;
         public static final int surface=0x7f0a000a;
-        public static final int surface_view=0x7f0a0015;
+        public static final int surface_view=0x7f0a0017;
         public static final int textView=0x7f0a0000;
-        public static final int url=0x7f0a001b;
-        public static final int vmos=0x7f0a000e;
-        public static final int vmos_v=0x7f0a0012;
+        public static final int url=0x7f0a001d;
+        public static final int vmos=0x7f0a0010;
+        public static final int vmos_v=0x7f0a0014;
     }
     public static final class layout {
         public static final int media_metadata=0x7f030000;
