@@ -11,6 +11,8 @@ public class VmosCount {
 	    private static Long buffer_time = 0L;
 	    private static Long buffer_time_play = 0L;
 	    
+	    private static String bitrate = "";
+	    
 	    public static Long getPretime() {  
 	        return pre_time;  
 	    }  
@@ -18,6 +20,7 @@ public class VmosCount {
 	    public static void setPretime(Long a) {  
 	    	VmosCount.pre_time = a;  
 	    } 
+	    
 	    public static Long getPlaytime() {  
 	        return play_time;  
 	    }  
@@ -25,13 +28,15 @@ public class VmosCount {
 	    public static void setPlaytime(Long a) {  
 	    	VmosCount.play_time = a;  
 	    } 
+	    
 	    public static Long getBuffertime() {  
 	        return buffer_time;  
 	    }  
 	      
 	    public static void setBuffertime(Long a) {  
 	    	VmosCount.buffer_time = a;  
-	    }  
+	    }
+	    
 	    public static Long getBufferPlaytime() {  
 	        return buffer_time_play;  
 	    }  
@@ -65,6 +70,15 @@ public class VmosCount {
 	      
 	    public static void setKaduntime(Long a) {  
 	    	VmosCount.kadun_time = a;  
+	    } 
+	    
+	    
+	    public static String getBitrate() {  
+	        return bitrate;  
+	    }  
+	      
+	    public static void setBitrate(String a) {  
+	    	VmosCount.bitrate = a;  
 	    } 
 	    
 	    public static Double getVmos_num() {

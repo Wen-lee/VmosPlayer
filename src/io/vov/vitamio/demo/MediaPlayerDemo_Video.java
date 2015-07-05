@@ -16,6 +16,8 @@
 
 package io.vov.vitamio.demo;
 
+import java.io.IOException;
+
 import io.vov.vitamio.demo.VmosCount;
 
 
@@ -32,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import io.vov.vitamio.LibsChecker;
+import io.vov.vitamio.MediaMetadataRetriever;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnCompletionListener;
@@ -68,7 +71,10 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 	private TextView mKadun_v;
 	private TextView mKaduntime_v;
 	private TextView mVmos_v;
+	private TextView bit_rate;
+	private TextView bit_rate_v;
 	private OnInfoListener mOnInfoListener;
+	private String mBitrate;
 	/**
 	 * 
 	 * Called when the activity is first created.
@@ -83,6 +89,27 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 		mPreview = (SurfaceView) findViewById(R.id.surface);
 		
 		// add by lw
+		path = "http://pl.youku.com/playlist/m3u8?ctype=12&ep=cCaXHEmNVswI7SPWjD8bYiSxJnRbXP8M9BiFgdBlBtQgSOq2%0D%0A&ev=1&keyframe=1&oip=459980061&sid=24360002880941258cb3d&token=4029&type=hd2&vid=162700276";
+		//path = "http://103.41.141.174/youku/677682CE8744D7E24AC3C6B19/0300010100522ED4C8110D1339CB5A4D7C55D2-6EB3-51F1-D7A0-ACDAD82AFCAF.flv";
+		io.vov.vitamio.MediaMetadataRetriever retriever = new io.vov.vitamio.MediaMetadataRetriever(this);
+		try {
+			
+			if (path == "") {
+				// Tell the user to provide an audio file URL.
+				Toast.makeText(MediaPlayerDemo_Video.this, "Please edit MediaMetadataRetrieverDemo Activity, " + "and set the path variable to your audio file path." + " Your audio file must be stored on sdcard.", Toast.LENGTH_LONG).show();
+				return;
+			}
+			retriever.setDataSource(path);
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		mBitrate = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VARIANT_BITRATE);
+		VmosCount.setBitrate(mBitrate);
+		
 		mIniTime = (TextView) findViewById(R.id.initial_time);
 		mKadun = (TextView) findViewById(R.id.kadun_num);
 		mKaduntime = (TextView) findViewById(R.id.kadun_time);
@@ -91,6 +118,9 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 		mKadun_v = (TextView) findViewById(R.id.kadun_num_v);
 		mKaduntime_v = (TextView) findViewById(R.id.kadun_time_v);
 		mVmos_v = (TextView) findViewById(R.id.vmos_v);
+		
+		bit_rate = (TextView) findViewById(R.id.bit_rate);
+		bit_rate_v = (TextView) findViewById(R.id.bit_rate_v);
 		//add by lw
 		mVmos.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -135,7 +165,7 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 				 * reasonably interleaved.
 				 * 
 				 */
-				path = "http://pl.youku.com/playlist/m3u8?ctype=12&ep=cCaXHEmNVswI7SPWjD8bYiSxJnRbXP8M9BiFgdBlBtQgSOq2%0D%0A&ev=1&keyframe=1&oip=459980061&sid=24360002880941258cb3d&token=4029&type=hd2&vid=162700276";
+				
 				if (path == "") {
 					// Tell the user to provide a media file URL.
 					Toast.makeText(MediaPlayerDemo_Video.this, "Please edit MediaPlayerDemo_Video Activity," + " and set the path variable to your media file URL.", Toast.LENGTH_LONG).show();
@@ -255,6 +285,7 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 	
 	//add by lw
 	private void VmosShow(){
+		bit_rate_v.setText(VmosCount.getBitrate().toString());
 		mIniTime_v.setText(VmosCount.getInitime().toString()+"  ms");
 		mKadun_v.setText(VmosCount.getKadunnum().toString()+"  ´Î");
 		mKaduntime_v.setText(VmosCount.getKaduntime().toString()+"  ms");
