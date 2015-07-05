@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<!-- 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+<io.vov.vitamio.widget.CenterLayout
+     
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+</io.vov.vitamio.widget.CenterLayout>
+android:layout_gravity="center"
+ -->
+        <SurfaceView
+            android:id="@+id/surface"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+             >
+        </SurfaceView>
+        
+  <TextView android:id="@+id/initial_time" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="24dip"
+          android:layout_marginLeft="5dip"
+          android:text="初始时延"
+          android:background="@drawable/black_vmos" />
+          /> 
+     <TextView android:id="@+id/kadun_num" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="24dip"
+          android:layout_marginLeft="95dip"
+          android:text="卡顿次数"
+          android:background="@drawable/black_vmos" />
+     
+         <TextView android:id="@+id/kadun_time" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="24dip"
+          android:layout_marginLeft="185dip"
+          android:text="卡顿时延"
+          android:background="@drawable/black_vmos" />
+         
+       <Button android:id="@+id/vmos" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="24dip"
+          android:layout_marginLeft="275dip"
+          android:text="Vmos分"
+          android:background="@drawable/black_vmos" />
+
+    <TextView android:id="@+id/initial_time_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="1dip"
+          android:layout_marginLeft="5dip"
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+          /> 
+     <TextView android:id="@+id/kadun_num_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="1dip"
+          android:layout_marginLeft="95dip"
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+     
+         <TextView android:id="@+id/kadun_time_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="1dip"
+          android:layout_marginLeft="185dip"
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+         
+       <TextView android:id="@+id/vmos_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="1dip"
+          android:layout_marginLeft="275dip"
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+        
+        
+        
+   
+
+</FrameLayout>
