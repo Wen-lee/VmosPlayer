@@ -2,7 +2,7 @@ package io.vov.vitamio.demo;
 
 public class VmosCount {
 	 	private static Long ini_time = 0L;  
-	    private static Long kadun_num = -1L;  
+	    private static Long kadun_num = 0L;  
 	    private static Long kadun_time = 0L;  
 	    private static Double vmos_num = 0.0;  
 	    
@@ -109,7 +109,7 @@ public class VmosCount {
 		    	 break;
 		    	 
 		     case 1: //Play
-		    	 if(VmosCount.getKadunnum() == -1){
+		    	 if(VmosCount.getKadunnum() == 0){
 		    		 VmosCount.setPlaytime(currunt_time);
 		    		 time_minus = VmosCount.getPlaytime() - VmosCount.getPretime();
 			    	 VmosCount.setInitime(time_minus);	 

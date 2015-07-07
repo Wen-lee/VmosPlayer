@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+         
     <io.vov.vitamio.widget.CenterLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,12 +18,144 @@
             android:layout_centerVertical="true" />
     </io.vov.vitamio.widget.CenterLayout>
 
+    
+    <FrameLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent" >
+    	
+        <TextView android:id="@+id/veiw_resolution" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="47dip"
+          android:layout_marginLeft="15dip"
+          android:text="分辨率:"
+          android:background="@drawable/black_vmos" />
+          
+       <TextView android:id="@+id/veiw_resolution_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="47dip"
+          android:layout_marginLeft="95dip"
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+        
+       <TextView android:id="@+id/veiw_bit_rate" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="47dip"
+          android:layout_marginLeft="200dip"
+          android:text="比特率:"
+          android:background="@drawable/black_vmos" />
+          
+       <TextView android:id="@+id/veiw_bit_rate_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="47dip"
+          android:layout_marginLeft="275dip"
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+     
+       <TextView android:id="@+id/veiw_kadun_num" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="24dip"
+          android:layout_marginLeft="15dip"
+          android:text="卡顿次数:"
+          android:background="@drawable/black_vmos" />
+     
+       <TextView android:id="@+id/veiw_kadun_num_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="24dip"
+          android:layout_marginLeft="95dip"
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+       
+       <TextView android:id="@+id/veiw_kadun_time" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="24dip"
+          android:layout_marginLeft="200dip"
+          android:text="卡顿时延:"
+          android:background="@drawable/black_vmos" />
+       
+       <TextView android:id="@+id/veiw_kadun_time_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="24dip"
+          android:layout_marginLeft="275dip"
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+       
+    	<TextView android:id="@+id/veiw_initial_time" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="1dip"
+          android:layout_marginLeft="15dip"
+          android:text="初始时延:"
+          android:background="@drawable/black_vmos" />
+         
+        <TextView android:id="@+id/veiw_initial_time_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="1dip"
+          android:layout_marginLeft="95dip"
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+        
+        <Button
+            android:id="@+id/veiw_vmos"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_gravity="top"
+            android:layout_marginLeft="200dip"
+            android:layout_marginTop="1dip"
+            android:background="@drawable/black_vmos"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="Vmos:" />
+        
+       <TextView android:id="@+id/veiw_vmos_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="top" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginTop="1dip"
+          android:layout_marginLeft="275dip"
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+        
+        </FrameLayout>
+    
+    
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="horizontal" >
 
+     
+        
         <ProgressBar
             android:id="@+id/probar"
             style="?android:attr/progressBarStyleLarge"

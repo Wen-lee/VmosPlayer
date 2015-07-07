@@ -75,8 +75,11 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 	private TextView bit_rate_v;
 	private TextView resolution;
 	private TextView resolution_v;
-	private Long mDuration;
 	
+	private Long mDuration;
+	private Integer height ;
+	private Integer weight ;
+
 	private String mBitrate;
 	/**
 	 * 
@@ -110,6 +113,8 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		//add by lw
 		mBitrate = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VARIANT_BITRATE);
 		VmosCount.setBitrate(mBitrate);
 		
@@ -124,7 +129,7 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 		bit_rate = (TextView) findViewById(R.id.bit_rate);
 		bit_rate_v = (TextView) findViewById(R.id.bit_rate_v);
 		resolution = (TextView) findViewById(R.id.resolution);
-		bit_rate_v = (TextView) findViewById(R.id.resolution_v);
+		resolution_v = (TextView) findViewById(R.id.resolution_v);
 		
 		//add by lw
 		mVmos.setOnClickListener(new View.OnClickListener() {
@@ -233,6 +238,10 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 			startVideoPlayback();
 			
 			//add by lw
+			height = mMediaPlayer.getVideoHeight();
+			weight = mMediaPlayer.getVideoWidth();
+			String mResolution = height.toString() + "*" + weight.toString();
+			VmosCount.setResolution(mResolution);
 			VmosCount.VmosUpdate(1); // Video Begin
 			VmosShow();
 		}
@@ -289,12 +298,10 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 	
 	//add by lw
 	private void VmosShow(){
-		mDuration = mMediaPlayer.getDuration();
+
+		//mDuration = mMediaPlayer.getDuration();
 		
-		Integer height = mMediaPlayer.getVideoHeight();
-		Integer weight = mMediaPlayer.getVideoWidth();
-		String mResolution = height.toString() + "*" + weight.toString();
-		VmosCount.setResolution(mResolution);
+
 		resolution_v.setText(VmosCount.getResolution().toString());
 		bit_rate_v.setText(VmosCount.getBitrate().toString());
 		mIniTime_v.setText(VmosCount.getInitime().toString()+"  ms");
