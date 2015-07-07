@@ -16,6 +16,8 @@
 
 package io.vov.vitamio.demo;
 
+import io.vov.vitamio.demo.VmosCount;
+
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;

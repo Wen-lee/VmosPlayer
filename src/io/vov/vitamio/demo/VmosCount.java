@@ -12,6 +12,7 @@ public class VmosCount {
 	    private static Long buffer_time_play = 0L;
 	    
 	    private static String bitrate = "";
+	    private static String resolution = "";
 	    
 	    public static Long getPretime() {  
 	        return pre_time;  
@@ -44,8 +45,6 @@ public class VmosCount {
 	    public static void setBufferPlaytime(Long a) {  
 	    	VmosCount.buffer_time_play = a;  
 	    }  
-	    
-	    
 	    
 	    //
 	    public static Long getInitime() {  
@@ -81,6 +80,14 @@ public class VmosCount {
 	    	VmosCount.bitrate = a;  
 	    } 
 	    
+	    public static String getResolution() {  
+	        return resolution;  
+	    }  
+	      
+	    public static void setResolution(String a) {  
+	    	VmosCount.resolution = a;  
+	    } 
+	    
 	    public static Double getVmos_num() {
 	    	vmos_num = 5*(0.092*ini_time.doubleValue() + 0.108*kadun_time.doubleValue())/1000 ;
 	        return vmos_num;  
@@ -89,4 +96,49 @@ public class VmosCount {
 	    public static void setVmosnum(Double a) {  
 	    	VmosCount.vmos_num = a;  
 	    } 
+	    
+	    
+	    public static void VmosUpdate(int state){
+		     Long currunt_time;
+		     Long time_minus;
+		     currunt_time = System.currentTimeMillis();
+		     
+		     switch(state){
+		     case 0: //Initial
+		    	 VmosCount.setPretime(currunt_time);
+		    	 break;
+		    	 
+		     case 1: //Play
+		    	 if(VmosCount.getKadunnum() == -1){
+		    		 VmosCount.setPlaytime(currunt_time);
+		    		 time_minus = VmosCount.getPlaytime() - VmosCount.getPretime();
+			    	 VmosCount.setInitime(time_minus);	 
+		    	 }else{
+		    		 //VmosCount.setPlaytime(currunt_time);
+		    		 //time_minus = VmosCount.getPlaytime() - VmosCount.getBuffertime();
+		    		 //VmosCount.setKaduntime(time_minus + VmosCount.getKaduntime());
+		    	 }
+	    		 break; 
+		    	 
+		     case 2: //Buffering
+		    	 if(VmosCount.getPlaytime() > 0){
+			    	 VmosCount.setBuffertime(currunt_time);
+			    	 VmosCount.setKadunnum(VmosCount.getKadunnum() + 1);
+		    	 }
+		    	 break; 
+		    	 
+		     case 3: //Buffer end Play
+		    	 if(VmosCount.getKadunnum() > 0){
+		    		 VmosCount.setBufferPlaytime(currunt_time);
+		    		 time_minus = VmosCount.getBufferPlaytime() - VmosCount.getBuffertime();
+		    		 VmosCount.setKaduntime(time_minus + VmosCount.getKaduntime());
+		    	 }
+	    		 break; 
+		    	 
+		     default:
+		    		 ;
+		     }
+		} 
+	    
+	    
 }

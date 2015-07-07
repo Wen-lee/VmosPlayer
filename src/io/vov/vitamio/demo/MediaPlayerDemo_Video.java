@@ -42,7 +42,7 @@ import io.vov.vitamio.MediaPlayer.OnInfoListener;
 import io.vov.vitamio.MediaPlayer.OnPreparedListener;
 import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
 
-public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdateListener, OnCompletionListener, OnPreparedListener, OnVideoSizeChangedListener, SurfaceHolder.Callback {
+public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdateListener, OnInfoListener,OnCompletionListener, OnPreparedListener, OnVideoSizeChangedListener, SurfaceHolder.Callback {
 
 	private static final String TAG = "MediaPlayerDemo";
 	private int mVideoWidth;
@@ -73,7 +73,10 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 	private TextView mVmos_v;
 	private TextView bit_rate;
 	private TextView bit_rate_v;
-	private OnInfoListener mOnInfoListener;
+	private TextView resolution;
+	private TextView resolution_v;
+	private Long mDuration;
+	
 	private String mBitrate;
 	/**
 	 * 
@@ -118,9 +121,11 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 		mKadun_v = (TextView) findViewById(R.id.kadun_num_v);
 		mKaduntime_v = (TextView) findViewById(R.id.kadun_time_v);
 		mVmos_v = (TextView) findViewById(R.id.vmos_v);
-		
 		bit_rate = (TextView) findViewById(R.id.bit_rate);
 		bit_rate_v = (TextView) findViewById(R.id.bit_rate_v);
+		resolution = (TextView) findViewById(R.id.resolution);
+		bit_rate_v = (TextView) findViewById(R.id.resolution_v);
+		
 		//add by lw
 		mVmos.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -134,8 +139,6 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 		holder.addCallback(this);
 		holder.setFormat(PixelFormat.RGBA_8888); 
 		extras = getIntent().getExtras();
-		
-
 		
 	}
 
@@ -176,7 +179,8 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 
 			}
 			//add by lw
-			 VmosUpdate(0);
+			 VmosCount.VmosUpdate(0);// Video Initial
+			 VmosShow();
 			 
 			// Create a new media player and set the listeners
 			mMediaPlayer = new MediaPlayer(this);
@@ -189,12 +193,11 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 			mMediaPlayer.setOnVideoSizeChangedListener(this);
 			
 			// add lw
-			mMediaPlayer.setOnInfoListener(mInfoListener);
+			mMediaPlayer.setOnInfoListener(this);
+			//mMediaPlayer.setOnInfoListener(mInfoListener);
 			
 			setVolumeControlStream(AudioManager.STREAM_MUSIC);
 			 
-		
-			
 			
 		} catch (Exception e) {
 			Log.e(TAG, "error: " + e.getMessage(), e);
@@ -202,7 +205,7 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 	}
 
 	public void onBufferingUpdate(MediaPlayer arg0, int percent) {
-		 Log.d(TAG, "onBufferingUpdate percent:" + percent);
+		Log.d(TAG, "onBufferingUpdate percent:" + percent);
 	}
 
 	public void onCompletion(MediaPlayer arg0) {
@@ -230,7 +233,8 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 			startVideoPlayback();
 			
 			//add by lw
-			VmosUpdate(1);
+			VmosCount.VmosUpdate(1); // Video Begin
+			VmosShow();
 		}
 	}
 
@@ -285,57 +289,21 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 	
 	//add by lw
 	private void VmosShow(){
+		mDuration = mMediaPlayer.getDuration();
+		
+		Integer height = mMediaPlayer.getVideoHeight();
+		Integer weight = mMediaPlayer.getVideoWidth();
+		String mResolution = height.toString() + "*" + weight.toString();
+		VmosCount.setResolution(mResolution);
+		resolution_v.setText(VmosCount.getResolution().toString());
 		bit_rate_v.setText(VmosCount.getBitrate().toString());
 		mIniTime_v.setText(VmosCount.getInitime().toString()+"  ms");
 		mKadun_v.setText(VmosCount.getKadunnum().toString()+"  ´Î");
 		mKaduntime_v.setText(VmosCount.getKaduntime().toString()+"  ms");
 		mVmos_v.setText(VmosCount.getVmos_num().toString());
 	}
-	
-	//add by lw
-	private void VmosUpdate(int state){
-	     Long currunt_time;
-	     Long time_minus;
-	     currunt_time = System.currentTimeMillis();
-	     VmosShow();
-	     switch(state){
-	     case 0: //Initial
-	    	 VmosCount.setPretime(currunt_time);
-	    	 break;
-	    	 
-	     case 1: //Play
-	    	 if(VmosCount.getKadunnum() == -1){
-	    		 VmosCount.setPlaytime(currunt_time);
-	    		 time_minus = VmosCount.getPlaytime() - VmosCount.getPretime();
-		    	 VmosCount.setInitime(time_minus);	 
-	    	 }else{
-	    		 //VmosCount.setPlaytime(currunt_time);
-	    		 //time_minus = VmosCount.getPlaytime() - VmosCount.getBuffertime();
-	    		 //VmosCount.setKaduntime(time_minus + VmosCount.getKaduntime());
-	    	 }
-    		 break; 
-	    	 
-	     case 2: //Buffering
-	    	 if(VmosCount.getPlaytime() > 0){
-		    	 VmosCount.setBuffertime(currunt_time);
-		    	 VmosCount.setKadunnum(VmosCount.getKadunnum() + 1);
-	    	 }
-	    	 break; 
-	    	 
-	     case 3: //Buffer end Play
-	    	 if(VmosCount.getKadunnum() > 0){
-	    		 VmosCount.setBufferPlaytime(currunt_time);
-	    		 time_minus = VmosCount.getBufferPlaytime() - VmosCount.getBuffertime();
-	    		 VmosCount.setKaduntime(time_minus + VmosCount.getKaduntime());
-	    	 }
-    		 break; 
-	    	 
-	     default:
-	    		 ;
-	     }
-	
-	}
-	  private OnInfoListener mInfoListener = new OnInfoListener() {
+
+	/* private OnInfoListener mInfoListener = new OnInfoListener() {
 		    @Override
 		    public boolean onInfo(MediaPlayer mp, int what, int extra) {
 		      //Log.d("onInfo: (%d, %d)", what, extra);
@@ -353,5 +321,28 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 		      return true;
 		    }
 		  };
+*/
+	@Override
+	public boolean onInfo(MediaPlayer mp, int what, int extra) {
+		switch (what) {
+			case MediaPlayer.MEDIA_INFO_BUFFERING_START:
+				if (mMediaPlayer.isPlaying()) {
+					mMediaPlayer.pause();
+					VmosCount.VmosUpdate(2); // Vedio Stalling
+					VmosShow();
+				}
+				break;
+		    case MediaPlayer.MEDIA_INFO_BUFFERING_END:
+		    	mMediaPlayer.start();
+		    	VmosCount.VmosUpdate(3);
+		    	VmosShow();
+		        break;
+		    case MediaPlayer.MEDIA_INFO_DOWNLOAD_RATE_CHANGED:
+		        //downloadRateView.setText("" + extra + "kb/s" + "  ");
+		        break;
+		    }
+		    return true;
+		  }
+		  
 
 }

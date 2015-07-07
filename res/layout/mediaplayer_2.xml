@@ -23,77 +23,98 @@ android:layout_gravity="center"
              >
         </SurfaceView>
         
-     <TextView android:id="@+id/bit_rate" 
+        
+       <TextView android:id="@+id/resolution" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content"   
           android:layout_gravity="bottom" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
           android:layout_marginBottom="47dip"
           android:layout_marginLeft="5dip"
-          android:text="比特率："
+          android:text="分辨率:"
           android:background="@drawable/black_vmos" />
-          /> 
-     <TextView android:id="@+id/bit_rate_v" 
+          
+       <TextView android:id="@+id/resolution_v" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content"   
           android:layout_gravity="bottom" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
           android:layout_marginBottom="47dip"
           android:layout_marginLeft="95dip"
-          android:text=""
+          android:text="0"
+          android:background="@drawable/black_vmos" />
+        
+       <TextView android:id="@+id/bit_rate" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="47dip"
+          android:layout_marginLeft="185dip"
+          android:text="比特率:"
+          android:background="@drawable/black_vmos" />
+          
+       <TextView android:id="@+id/bit_rate_v" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom" android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="47dip"
+          android:layout_marginLeft="275dip"
+          android:text="0"
           android:background="@drawable/black_vmos" />
      
-  <TextView android:id="@+id/initial_time" 
+       <TextView android:id="@+id/kadun_num" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content"   
           android:layout_gravity="bottom" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
           android:layout_marginBottom="24dip"
           android:layout_marginLeft="5dip"
-          android:text="初始时延"
+          android:text="卡顿次数:"
           android:background="@drawable/black_vmos" />
-          /> 
-     <TextView android:id="@+id/kadun_num" 
+     
+       <TextView android:id="@+id/kadun_num_v" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content"   
           android:layout_gravity="bottom" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
           android:layout_marginBottom="24dip"
           android:layout_marginLeft="95dip"
-          android:text="卡顿次数"
+          android:text="0"
           android:background="@drawable/black_vmos" />
-     
-         <TextView android:id="@+id/kadun_time" 
+       
+       <TextView android:id="@+id/kadun_time" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content"   
           android:layout_gravity="bottom" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
           android:layout_marginBottom="24dip"
           android:layout_marginLeft="185dip"
-          android:text="卡顿时延"
+          android:text="卡顿时延:"
           android:background="@drawable/black_vmos" />
-         
-       <Button android:id="@+id/vmos" 
+       
+       <TextView android:id="@+id/kadun_time_v" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content"   
           android:layout_gravity="bottom" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
           android:layout_marginBottom="24dip"
           android:layout_marginLeft="275dip"
-          android:text="Vmos分"
+          android:text="0"
           android:background="@drawable/black_vmos" />
-
-    <TextView android:id="@+id/initial_time_v" 
+       
+    	<TextView android:id="@+id/initial_time" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content"   
           android:layout_gravity="bottom" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
           android:layout_marginBottom="1dip"
           android:layout_marginLeft="5dip"
-          android:text="0"
+          android:text="初始时延:"
           android:background="@drawable/black_vmos" />
-          /> 
-     <TextView android:id="@+id/kadun_num_v" 
+         
+        <TextView android:id="@+id/initial_time_v" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content"   
           android:layout_gravity="bottom" android:singleLine="true"
@@ -102,17 +123,19 @@ android:layout_gravity="center"
           android:layout_marginLeft="95dip"
           android:text="0"
           android:background="@drawable/black_vmos" />
-     
-         <TextView android:id="@+id/kadun_time_v" 
-          android:layout_width="wrap_content" 
-          android:layout_height="wrap_content"   
-          android:layout_gravity="bottom" android:singleLine="true"
-          android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginBottom="1dip"
-          android:layout_marginLeft="185dip"
-          android:text="0"
-          android:background="@drawable/black_vmos" />
-         
+        
+        <Button
+            android:id="@+id/vmos"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="1dip"
+            android:layout_marginLeft="185dip"
+            android:background="@drawable/black_vmos"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="Vmos分:" />
+        
        <TextView android:id="@+id/vmos_v" 
           android:layout_width="wrap_content" 
           android:layout_height="wrap_content"   
@@ -122,9 +145,5 @@ android:layout_gravity="center"
           android:layout_marginLeft="275dip"
           android:text="0"
           android:background="@drawable/black_vmos" />
-        
-        
-        
-   
 
 </FrameLayout>

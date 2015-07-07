@@ -43,12 +43,17 @@ public class VitamioListActivity extends ListActivity {
 	}
 
 	protected List<Map<String, Object>> getData() {
+		// add by lw 
 		List<Map<String, Object>> myData = new ArrayList<Map<String, Object>>();
+		//addItem(myData, "MediaPlayer", new Intent(this, MediaPlayerDemo.class));
+		//addItem(myData, "VideoView", new Intent(this, VideoViewDemo.class));
+		//addItem(myData, "MediaMetadata", new Intent(this, MediaMetadataRetrieverDemo.class));
+		//addItem(myData, "VideoSubtitle", new Intent(this, VideoSubtitleList.class));
+		//addItem(myData, "VideoViewBuffer", new Intent(this, VideoViewBuffer.class));
 		addItem(myData, "MediaPlayer", new Intent(this, MediaPlayerDemo.class));
-		addItem(myData, "VideoView", new Intent(this, VideoViewDemo.class));
-		addItem(myData, "MediaMetadata", new Intent(this, MediaMetadataRetrieverDemo.class));
-		addItem(myData, "VideoSubtitle", new Intent(this, VideoSubtitleList.class));
-		addItem(myData, "VideoViewBuffer", new Intent(this, VideoViewBuffer.class));
+		addItem(myData, "VideoView", new Intent(this, VideoViewBuffer.class));
+		addItem(myData, "VmosParameterSetting", new Intent(this, VmosParameterSetting.class));
+		
 		return myData;
 	}
 
