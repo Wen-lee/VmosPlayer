@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import io.vov.vitamio.LibsChecker;
+import io.vov.vitamio.MediaMetadataRetriever;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnInfoListener;
@@ -118,8 +119,8 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
       mVideoView.setOnInfoListener(this);
       mVideoView.setOnBufferingUpdateListener(this);
       mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-        @Override
-        public void onPrepared(MediaPlayer mediaPlayer) {
+      @Override
+      public void onPrepared(MediaPlayer mediaPlayer) {
           // optional need Vitamio 4.0
           mediaPlayer.setPlaybackSpeed(1.0f);
           
@@ -131,7 +132,7 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
     	VmosCount.setResolution(resolution);
     	
         mDuration = mVideoView.getDuration();
-        
+       
         HttpGetContentLength httpentity = new HttpGetContentLength(path);
         Long contenlength = httpentity.getHttpContentLength();
         if( contenlength < 0){
@@ -148,6 +149,7 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
       	VmosShow();
         }
       });
+      
       
 		//add by lw
 		mVmos.setOnClickListener(new View.OnClickListener() {

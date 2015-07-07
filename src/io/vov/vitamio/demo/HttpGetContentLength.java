@@ -27,8 +27,9 @@ public class HttpGetContentLength {
 	public Long getHttpContentLength(){
 	// http://blog.csdn.net/bhq2010/article/details/9210007
 	HttpGet httpGet = new HttpGet(mPath);
-	httpGet.addHeader("Accept-Encoding","identity");
 	//HttpGet httpGet = new HttpGet("http://www.baidu.com");
+	httpGet.addHeader("Accept-Encoding","identity");
+	
 	HttpClient httpClient = new DefaultHttpClient();
 	try{
 		mHttpResponse = httpClient.execute(httpGet);
