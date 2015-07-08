@@ -26,6 +26,7 @@ public class HttpGetContentLength {
 	}  
 	public Long getHttpContentLength(){
 	// http://blog.csdn.net/bhq2010/article/details/9210007
+	//http://www.eoeandroid.com/thread-78942-1-1.html
 	HttpGet httpGet = new HttpGet(mPath);
 	//HttpGet httpGet = new HttpGet("http://www.baidu.com");
 	httpGet.addHeader("Accept-Encoding","identity");
