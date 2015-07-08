@@ -1,6 +1,9 @@
 package io.vov.vitamio.demo;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -8,6 +11,8 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+
+import android.widget.Toast;
 
 public class HttpGetContentLength {
 	
@@ -24,6 +29,7 @@ public class HttpGetContentLength {
 	public HttpGetContentLength( String path) {  
 		mPath = path;
 	}  
+	
 	public Long getHttpContentLength(){
 	// http://blog.csdn.net/bhq2010/article/details/9210007
 	//http://www.eoeandroid.com/thread-78942-1-1.html

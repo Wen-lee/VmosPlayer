@@ -16,6 +16,10 @@
 
 package io.vov.vitamio.demo;
 
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 import io.vov.vitamio.demo.VmosCount;
 import io.vov.vitamio.demo.HttpGetContentLength;
 
@@ -133,20 +137,33 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
     	
         mDuration = mVideoView.getDuration();
        
-        HttpGetContentLength httpentity = new HttpGetContentLength(path);
-        Long contenlength = httpentity.getHttpContentLength();
-        if( contenlength < 0){
-        	 Toast.makeText(
-        	          VideoViewBuffer.this,
-        	          "Content length: " + contenlength.toString(), Toast.LENGTH_LONG).show();
-        	 mBitrate = "NULL";
-        }else{
-            Double bitrate = (contenlength/mDuration.doubleValue())*1000;
-            mBitrate = bitrate.toString();
-        }
+		M3U8Parser mM3u8 = new M3U8Parser();
+		Map<String,String> parseUrlMap = M3U8Parser.parseStringFromUrl(path);
+		Set set = parseUrlMap.entrySet();         
+		Iterator i = set.iterator();         
+		while(i.hasNext()){      
+		     Map.Entry<String, String> entry1=(Map.Entry<String, String>)i.next();    
+		     //System.out.println(entry1.getKey()+"=================="+entry1.getValue());
+		     
+		        HttpGetContentLength httpentity = new HttpGetContentLength(entry1.getValue());
+		        Long contenlength = httpentity.getHttpContentLength();
+		        if( contenlength < 0){
+		        	 Toast.makeText(
+		        	          VideoViewBuffer.this,
+		        	          "Content length: " + contenlength.toString(), Toast.LENGTH_LONG).show();
+		        	 mBitrate = "NULL";
+		        }else{
+		        	Toast.makeText(
+		        	          VideoViewBuffer.this,
+		        	          "Content length: " + contenlength.toString(), Toast.LENGTH_LONG).show();
+		            Double bitrate = (contenlength/mDuration.doubleValue())*1000;
+		            mBitrate = bitrate.toString();
+		        }
 
-        VmosCount.setBitrate(mBitrate);
-      	VmosShow();
+		        VmosCount.setBitrate(mBitrate);
+		      	VmosShow();
+		}
+		
         }
       });
       
