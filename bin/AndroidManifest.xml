@@ -74,6 +74,11 @@
             android:name=".VideoViewBuffer"
             android:label="@string/title_activity_video_buffer" >
         </activity>
+        <activity
+            android:name=".VmosSet"
+            android:label="@string/title_activity_VmosSet" >
+        </activity>
+        
     </application>
 
 </manifest>

@@ -50,7 +50,7 @@
           android:marqueeRepeatLimit="marquee_forever"
           android:layout_marginTop="47dip"
           android:layout_marginLeft="200dip"
-          android:text="比特率:"
+          android:text="码率Kbps:"
           android:background="@drawable/black_vmos" />
           
        <TextView android:id="@+id/veiw_bit_rate_v" 

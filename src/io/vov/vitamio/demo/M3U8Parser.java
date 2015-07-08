@@ -62,10 +62,10 @@ public final  class M3U8Parser {
 				String line = ""; 
 				while((line = reader.readLine()) != null){ 
 					if(line.startsWith("#EXTINF:")){
-						//这里是Metadata信息 
+						//这里是Metadata信息  时间
 						timeparse = line;
 					}else if(line.length() > 0 && line.startsWith("http://")){ 
-						//这里是一个指向的音频流路径 
+						//这里是一个指向的视频的路劲
 						urlparse = line; 
 					}
 					if(timeparse != null && urlparse != null){

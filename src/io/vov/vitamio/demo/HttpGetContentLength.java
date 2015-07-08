@@ -1,9 +1,6 @@
 package io.vov.vitamio.demo;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -11,8 +8,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-
-import android.widget.Toast;
 
 public class HttpGetContentLength {
 	
@@ -23,7 +18,7 @@ public class HttpGetContentLength {
 
 
 	public HttpGetContentLength() {  
-	       // Exists only to defeat instantiation.  
+		// Exists only to defeat instantiation.  
 	}  
 
 	public HttpGetContentLength( String path) {  
@@ -31,37 +26,33 @@ public class HttpGetContentLength {
 	}  
 	
 	public Long getHttpContentLength(){
-	// http://blog.csdn.net/bhq2010/article/details/9210007
+	//http://blog.csdn.net/bhq2010/article/details/9210007
 	//http://www.eoeandroid.com/thread-78942-1-1.html
-	HttpGet httpGet = new HttpGet(mPath);
-	//HttpGet httpGet = new HttpGet("http://www.baidu.com");
-	httpGet.addHeader("Accept-Encoding","identity");
+		HttpGet httpGet = new HttpGet(mPath);
+		httpGet.addHeader("Accept-Encoding","identity");
 	
-	HttpClient httpClient = new DefaultHttpClient();
-	try{
-		mHttpResponse = httpClient.execute(httpGet);
-		
-		if(mHttpResponse.getStatusLine().getStatusCode() == 200)
-		 {
-			mHttpEntity = mHttpResponse.getEntity();
-			mContenLength = mHttpEntity.getContentLength();
-		 }else{
-			 mContenLength = -2L;
-		 }
-
-	}catch (ClientProtocolException e) {  
-	    // TODO Auto-generated catch block  
-	    e.printStackTrace(); 
-	}catch (IOException e) {
-		// TODO Auto-generated catch block  
-		e.printStackTrace();
-	}
-	finally{
-		httpClient.getConnectionManager().shutdown();
-	}
-
-	return mContenLength;
-	}
+		HttpClient httpClient = new DefaultHttpClient();
+		try{
+			mHttpResponse = httpClient.execute(httpGet);
 	
+			if(mHttpResponse.getStatusLine().getStatusCode() == 200){
+				mHttpEntity = mHttpResponse.getEntity();
+				mContenLength = mHttpEntity.getContentLength();
+			}else{
+				mContenLength = -2L;
+			}
 
+		}catch (ClientProtocolException e) {  
+			// TODO Auto-generated catch block  
+			e.printStackTrace(); 
+		}catch (IOException e) {
+			// TODO Auto-generated catch block  
+			e.printStackTrace();
+		}
+		finally{
+			httpClient.getConnectionManager().shutdown();
+		}
+
+		return mContenLength;
+	}
 }

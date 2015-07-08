@@ -1,5 +1,7 @@
 package io.vov.vitamio.demo;
 
+import java.text.DecimalFormat;
+
 public class VmosCount {
 	 	private static Long ini_time = 0L;  
 	    private static Long kadun_num = 0L;  
@@ -13,6 +15,8 @@ public class VmosCount {
 	    
 	    private static String bitrate = "";
 	    private static String resolution = "";
+	    
+	    private static int videotype = 0;  // 1 for hpd, 2 for hls
 	    
 	    public static Long getPretime() {  
 	        return pre_time;  
@@ -88,8 +92,19 @@ public class VmosCount {
 	    	VmosCount.resolution = a;  
 	    } 
 	    
+	    public static int getvideotype() {  
+	        return videotype;  
+	    }  
+	      
+	    public static void setvideotype(int a) {  
+	    	VmosCount.videotype = a;  
+	    } 
+	    
+	    
 	    public static Double getVmos_num() {
-	    	vmos_num = 5*(0.092*ini_time.doubleValue() + 0.108*kadun_time.doubleValue())/1000 ;
+	    	vmos_num = 5*(0.092*ini_time.doubleValue() + 0.108*kadun_time.doubleValue())/1000;
+	    	DecimalFormat  df   = new DecimalFormat("######0.00000");   
+	    	df.format(vmos_num);
 	        return vmos_num;  
 	    }  
 	      
@@ -139,6 +154,21 @@ public class VmosCount {
 		    		 ;
 		     }
 		} 
+	    
+	    public static void VmosInitial(){ 
+		 	ini_time = 0L;  
+		    kadun_num = 0L;  
+		    kadun_time = 0L;  
+		    vmos_num = 0.0;  
+		    
+		    pre_time = 0L;
+		    play_time = 0L;
+		    buffer_time = 0L;
+		    buffer_time_play = 0L;
+		    
+		    bitrate = "";
+		    resolution = "";
+	    }
 	    
 	    
 }

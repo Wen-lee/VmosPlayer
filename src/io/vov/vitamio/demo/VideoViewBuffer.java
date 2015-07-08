@@ -35,7 +35,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import io.vov.vitamio.LibsChecker;
-import io.vov.vitamio.MediaMetadataRetriever;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnInfoListener;
@@ -48,7 +47,7 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
    * TODO: Set the path variable to a streaming video URL or a local media file
    * path.
    */
-  private String path = "http://pl.youku.com/playlist/m3u8?ctype=12&ep=cCaXHEmNVswI7SPWjD8bYiSxJnRbXP8M9BiFgdBlBtQgSOq2%0D%0A&ev=1&keyframe=1&oip=459980061&sid=24360002880941258cb3d&token=4029&type=hd2&vid=162700276";
+  private String path;
   private Uri uri;
   private VideoView mVideoView;
   private ProgressBar pb;
@@ -68,7 +67,6 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 	private TextView resolution;
 	private TextView resolution_v;
 	
-	private Long mDuration;
 	private Integer mHeight;
 	private Integer mWeight;
 	private String mBitrate;
@@ -98,9 +96,17 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 	resolution = (TextView) findViewById(R.id.veiw_resolution);
 	resolution_v = (TextView) findViewById(R.id.veiw_resolution_v);
 	
-	StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
+	
+	if(VmosCount.getvideotype() == 1){
+		path = "http://120.37.140.82/youku/6772DE76F63447B6B9F456537/0300010D0052B1AC0E903903BAF2B1BA094593-0BDA-C137-4547-F36E311DA868.flv";
+	}else{
+		path = "http://pl.youku.com/playlist/m3u8?ctype=12&ep=cCaXHEmNVswI7SPWjD8bYiSxJnRbXP8M9BiFgdBlBtQgSOq2%0D%0A&ev=1&keyframe=1&oip=459980061&sid=24360002880941258cb3d&token=4029&type=hd2&vid=162700276";
+	}
+	
+    StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
     StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectLeakedSqlLiteObjects().detectLeakedClosableObjects().penaltyLog().penaltyDeath().build());
 	//add by lw
+    VmosCount.VmosInitial();
 	VmosCount.VmosUpdate(0); // Video Begin
 	VmosShow();
 	
@@ -128,42 +134,13 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
           // optional need Vitamio 4.0
           mediaPlayer.setPlaybackSpeed(1.0f);
           
-      	//add by lw
-        VmosCount.VmosUpdate(1); // Video Begin
-      	mHeight = mVideoView.getVideoHeight();
-    	mWeight = mVideoView.getVideoWidth();
-    	String resolution = mHeight.toString() + "*" + mWeight.toString();
-    	VmosCount.setResolution(resolution);
-    	
-        mDuration = mVideoView.getDuration();
-       
-		M3U8Parser mM3u8 = new M3U8Parser();
-		Map<String,String> parseUrlMap = M3U8Parser.parseStringFromUrl(path);
-		Set set = parseUrlMap.entrySet();         
-		Iterator i = set.iterator();         
-		while(i.hasNext()){      
-		     Map.Entry<String, String> entry1=(Map.Entry<String, String>)i.next();    
-		     //System.out.println(entry1.getKey()+"=================="+entry1.getValue());
-		     
-		        HttpGetContentLength httpentity = new HttpGetContentLength(entry1.getValue());
-		        Long contenlength = httpentity.getHttpContentLength();
-		        if( contenlength < 0){
-		        	 Toast.makeText(
-		        	          VideoViewBuffer.this,
-		        	          "Content length: " + contenlength.toString(), Toast.LENGTH_LONG).show();
-		        	 mBitrate = "NULL";
-		        }else{
-		        	Toast.makeText(
-		        	          VideoViewBuffer.this,
-		        	          "Content length: " + contenlength.toString(), Toast.LENGTH_LONG).show();
-		            Double bitrate = (contenlength/mDuration.doubleValue())*1000;
-		            mBitrate = bitrate.toString();
-		        }
-
-		        VmosCount.setBitrate(mBitrate);
-		      	VmosShow();
-		}
-		
+      	  //add by lw
+          VmosCount.VmosUpdate(1); // Video Begin
+	      mHeight = mVideoView.getVideoHeight();
+	      mWeight = mVideoView.getVideoWidth();
+	      String resolution = mHeight.toString() + "*" + mWeight.toString();
+	      VmosCount.setResolution(resolution);
+          VmosShow();
         }
       });
       
@@ -172,7 +149,66 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 		mVmos.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v){
-				VmosShow();
+				
+				String mM3u8Str = "m3u8";
+				int indexM3U8 = path.indexOf(mM3u8Str);
+				if(indexM3U8 > 0){ // HLS
+					
+					M3U8Parser mM3u8 = new M3U8Parser();
+					Map<String,String> parseUrlMap = M3U8Parser.parseStringFromUrl(path);
+					Set set = parseUrlMap.entrySet();         
+					Iterator i = set.iterator();
+					float durationSum = 0;
+					float contentSum = 0;
+					while(i.hasNext()){
+					     Map.Entry<String, String> entry1=(Map.Entry<String, String>)i.next();    
+					  
+					     String timeExif = entry1.getKey();
+					     HttpGetContentLength httpentity = new HttpGetContentLength(entry1.getValue());
+					     Long contenlength = httpentity.getHttpContentLength();
+					     if( contenlength < 0){
+					        Toast.makeText(
+					        		VideoViewBuffer.this,
+					        	    "Content length: " + contenlength.toString(), Toast.LENGTH_LONG).show();
+					        	    mBitrate = "NULL";
+					     }else{
+
+					        String timeString = timeExif.substring(8, timeExif.length());
+					        Float timeStrtoFloat = Float.parseFloat(timeString.substring(0,timeString.length()-1));
+					        Toast.makeText(
+					        		VideoViewBuffer.this,
+					        	    "Content length: " + contenlength.toString() +" Dutation:"+ timeStrtoFloat.toString(), Toast.LENGTH_LONG).show();
+					            
+					        Float bitrate = (contenlength/timeStrtoFloat)*8/1000;
+					        mBitrate = bitrate.toString();
+					        durationSum = durationSum + timeStrtoFloat;
+					        contentSum = contentSum + contenlength;
+					     }
+
+					        VmosCount.setBitrate(mBitrate);
+					      	VmosShow();
+					}
+					
+			     	 Float avrBitrate = (contentSum/durationSum)*8/1000 ;
+			     	 mBitrate = avrBitrate.toString();
+					 VmosCount.setBitrate(mBitrate);
+				     VmosShow();
+				}else{// HPD
+					
+				    Long mDuration;
+				    Long mHPDcontentlength;
+					mDuration = mVideoView.getDuration();
+					HttpGetContentLength mHPDcontent = new HttpGetContentLength(path);
+					mHPDcontentlength = mHPDcontent.getHttpContentLength();
+					Float bitrate = (mHPDcontentlength/mDuration.floatValue())*8; // here time is ms
+					
+					Toast.makeText(
+			        		VideoViewBuffer.this,
+			        	    "Content length: " + mHPDcontentlength.toString() +" Dutation:"+ mDuration.toString(), Toast.LENGTH_LONG).show();
+					mBitrate = bitrate.toString();
+					VmosCount.setBitrate(mBitrate);
+					VmosShow();
+				}	
 			}
 		});
 		
@@ -228,6 +264,6 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 		mKaduntime_v.setText(VmosCount.getKaduntime().toString()+"  ms");
 		mVmos_v.setText(VmosCount.getVmos_num().toString());
 	}
-  
+	
 
 }
