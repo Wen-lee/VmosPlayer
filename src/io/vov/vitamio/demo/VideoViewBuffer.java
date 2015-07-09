@@ -108,7 +108,7 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 	//add by lw
     VmosCount.VmosInitial();
 	VmosCount.VmosUpdate(0); // Video Begin
-	VmosShow();
+	//VmosShow();
 	
     if (path == "") {
       // Tell the user to provide a media file URL/path.
@@ -135,10 +135,13 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
           mediaPlayer.setPlaybackSpeed(1.0f);
           
       	  //add by lw
-          VmosCount.VmosUpdate(1); // Video Begin
+          //VmosCount.VmosUpdate(1); // Video Begin
 	      mHeight = mVideoView.getVideoHeight();
 	      mWeight = mVideoView.getVideoWidth();
-	      String resolution = mHeight.toString() + "*" + mWeight.toString();
+	      String resolution =mWeight.toString()+ "*" + mHeight.toString();
+	      //VmosCount.setvideoWidth(1);
+	      VmosCount.setvideoWidth(mWeight);
+	      VmosCount.setvideoHeight(mHeight);
 	      VmosCount.setResolution(resolution);
           VmosShow();
         }
@@ -192,6 +195,7 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 			     	 Float avrBitrate = (contentSum/durationSum)*8/1000 ;
 			     	 mBitrate = avrBitrate.toString();
 					 VmosCount.setBitrate(mBitrate);
+					 VmosCount.setDurarionn((double)durationSum*1000);
 				     VmosShow();
 				}else{// HPD
 					
@@ -207,6 +211,7 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 			        	    "Content length: " + mHPDcontentlength.toString() +" Dutation:"+ mDuration.toString(), Toast.LENGTH_LONG).show();
 					mBitrate = bitrate.toString();
 					VmosCount.setBitrate(mBitrate);
+					VmosCount.setDurarionn(mDuration.doubleValue());
 					VmosShow();
 				}	
 			}
@@ -239,7 +244,11 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
       downloadRateView.setVisibility(View.GONE);
       loadRateView.setVisibility(View.GONE);
       
-      VmosCount.VmosUpdate(3); // Vedio Stalling
+      if(VmosCount.getPreendtime() == 0){
+    	  VmosCount.VmosUpdate(1); // Video Begin
+      }else{
+    	  VmosCount.VmosUpdate(3); // Vedio Stalling
+      }
 	  VmosShow();
       break;
     case MediaPlayer.MEDIA_INFO_DOWNLOAD_RATE_CHANGED:
@@ -263,7 +272,12 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 		mKadun_v.setText(VmosCount.getKadunnum().toString()+"  ´Î");
 		mKaduntime_v.setText(VmosCount.getKaduntime().toString()+"  ms");
 		mVmos_v.setText(VmosCount.getVmos_num().toString());
+	    Toast.makeText(
+	            VideoViewBuffer.this,
+	             " Q:"+VmosCount.getsQuality().toString()+" L:"+VmosCount.getsLoading().toString()+" S:"+VmosCount.getDurarion().toString()+" V:"+VmosCount.getVmos_num().toString(), Toast.LENGTH_LONG).show();
 	}
+	
+
 	
 
 }
