@@ -3,7 +3,7 @@ package io.vov.vitamio.demo;
 import java.text.DecimalFormat;
 
 public class VmosCount {
-	 	private static Long ini_time = 0L;
+	    private static Long ini_time = 0L;
 	    private static Long kadun_num = 0L;  
 	    private static Long kadun_time = 0L;  
 	    private static Double vmos_num = 0.0;  
@@ -168,20 +168,20 @@ public class VmosCount {
 	    
 	    public static Double getsQuality() {
 	    	Double sQuality;
-	    	Integer mWidth = getvideoHeight(); // height here
-	    	if(mWidth > 2160){ // 5K or more  2880 
+	    	Integer mheight = getvideoHeight(); // height here
+	    	if(mheight > 2160){ // 5K or more  2880 
 	    		sQuality = 5.0;
-	    	}else if(mWidth > 1440 && mWidth <= 2160){ // 4k
+	    	}else if(mheight > 1440 && mheight <= 2160){ // 4k
 	    		sQuality = 4.9;
-	    	}else if(mWidth > 1080 && mWidth <= 1440){ // 2k
+	    	}else if(mheight > 1080 && mheight <= 1440){ // 2k
 	    		sQuality = 4.8;
-	    	}else if(mWidth > 720 && mWidth <= 1080){ // 1080P
+	    	}else if(mheight > 720 && mheight <= 1080){ // 1080P
 	    		sQuality = 4.5;
-	    	}else if(mWidth > 480 && mWidth <= 720){ // 720P
+	    	}else if(mheight > 480 && mheight <= 720){ // 720P
 	    		sQuality = 4.0;
-	    	}else if(mWidth > 360 && mWidth <= 480){ // 480 p
+	    	}else if(mheight > 360 && mheight <= 480){ // 480 p
 	    		sQuality = 3.6;
-	    	}else{ // 360P
+	    	}else{ // 360P or less
 	    		sQuality = 2.8;
 	    	}
 	    	
@@ -277,18 +277,22 @@ public class VmosCount {
 		} 
 	    
 	    public static void VmosInitial(){ 
-		 	ini_time = 0L;  
-		    kadun_num = 0L;  
-		    kadun_time = 0L;  
-		    vmos_num = 0.0;  
+		ini_time = 0L;  
+		kadun_num = 0L;
+		kadun_time = 0L;  
+		vmos_num = 0.0;  
 		    
-		    pre_time = 0L;
-		    play_time = 0L;
-		    buffer_time = 0L;
-		    buffer_time_play = 0L;
-		    
-		    bitrate = "";
-		    resolution = "";
+		pre_time = 0L;
+		pre_endtime = 0L;  
+		play_time = 0L;
+		buffer_time = 0L;
+		buffer_time_play = 0L;
+	    
+	    	videoWidth = 0;
+	    	videoHeight = 0;
+	        durarion = 0.0;
+		bitrate = "";
+		resolution = "";
 	    }
 	    
 	    
