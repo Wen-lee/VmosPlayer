@@ -189,7 +189,7 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 					     }
 
 					        VmosCount.setBitrate(mBitrate);
-					      	VmosShow();
+					      	//VmosShow();
 					}
 					
 			     	 Float avrBitrate = (contentSum/durationSum)*8/1000 ;
