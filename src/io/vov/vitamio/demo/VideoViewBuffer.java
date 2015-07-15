@@ -96,11 +96,25 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 	resolution = (TextView) findViewById(R.id.veiw_resolution);
 	resolution_v = (TextView) findViewById(R.id.veiw_resolution_v);
 	
-	
-	if(VmosCount.getvideotype() == 1){
-		path = "http://120.37.140.82/youku/6772DE76F63447B6B9F456537/0300010D0052B1AC0E903903BAF2B1BA094593-0BDA-C137-4547-F36E311DA868.flv";
-	}else{
-		path = "http://pl.youku.com/playlist/m3u8?ctype=12&ep=cCaXHEmNVswI7SPWjD8bYiSxJnRbXP8M9BiFgdBlBtQgSOq2%0D%0A&ev=1&keyframe=1&oip=459980061&sid=24360002880941258cb3d&token=4029&type=hd2&vid=162700276";
+	switch(VmosCount.getvideotype()){
+		case 1: //hpd
+			path = "http://183.60.145.50/youku/67739A92D9E478123A0AC66274/030008010051001884037C05A3C1C42389B547-5747-5466-4525-602B43670F71.mp4";
+			//path = "http://113.107.113.145/youku/69783228D1D4C82143108631EF/030002010051EB3E723C2D061A18663030D906-BF2B-733E-C25F-8B18F1B1518A.flv";
+			break;
+		case 2: // hls
+			path = "http://pl.youku.com/playlist/m3u8?ctype=12&ep=cCaXHEmNVswI7SPWjD8bYiSxJnRbXP8M9BiFgdBlBtQgSOq2%0D%0A&ev=1&keyframe=1&oip=459980061&sid=24360002880941258cb3d&token=4029&type=hd2&vid=162700276";
+			break;
+		case 3:
+			path = VmosCount.getvideopath();
+			break;
+		case 4:
+			path = "http://pl.youku.com/playlist/m3u8?ctype=12&ep=cSaXHECJX8sB7CLciT8bYn6wIHQKXP8M9hqAhdtjAdQjTuy%2F%0D%0A&ev=1&keyframe=1&oip=3658602415&sid=3436949519131125bbd35&token=7640&type=mp4&vid=160554911";
+			break;
+		case 5:
+			path = "http://pl.youku.com/playlist/m3u8?ctype=12&ep=dCaXHECJX8YJ4yPZiD8bY33idnAGXP8O%2Fh%2BGh9NiBNQnTOq7%0D%0A&ev=1&keyframe=1&oip=3658602415&sid=6436949896060124a0279&token=3424&type=flv&vid=148036104";
+			break;
+		default:
+				path ="";
 	}
 	
     StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
@@ -108,7 +122,6 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 	//add by lw
     VmosCount.VmosInitial();
 	VmosCount.VmosUpdate(0); // Video Begin
-	//VmosShow();
 	
     if (path == "") {
       // Tell the user to provide a media file URL/path.
@@ -135,13 +148,13 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
           mediaPlayer.setPlaybackSpeed(1.0f);
           
       	  //add by lw
-          //VmosCount.VmosUpdate(1); // Video Begin
 	      mHeight = mVideoView.getVideoHeight();
 	      mWeight = mVideoView.getVideoWidth();
 	      String resolution =mWeight.toString()+ "*" + mHeight.toString();
-	      //VmosCount.setvideoWidth(1);
 	      VmosCount.setvideoWidth(mWeight);
 	      VmosCount.setvideoHeight(mHeight);
+	      Long duration = mVideoView.getDuration();
+	      VmosCount.setDurarionn(duration.doubleValue());//
 	      VmosCount.setResolution(resolution);
           VmosShow();
         }
@@ -189,7 +202,7 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 					     }
 
 					        VmosCount.setBitrate(mBitrate);
-					      	//VmosShow();
+					      	VmosShow();
 					}
 					
 			     	 Float avrBitrate = (contentSum/durationSum)*8/1000 ;
@@ -274,7 +287,7 @@ public class VideoViewBuffer extends Activity implements OnInfoListener, OnBuffe
 		mVmos_v.setText(VmosCount.getVmos_num().toString());
 	    Toast.makeText(
 	            VideoViewBuffer.this,
-	             " Q:"+VmosCount.getsQuality().toString()+" L:"+VmosCount.getsLoading().toString()+" S:"+VmosCount.getDurarion().toString()+" V:"+VmosCount.getVmos_num().toString(), Toast.LENGTH_LONG).show();
+	             " Q:"+VmosCount.getsQuality().toString()+" L:"+VmosCount.getsLoading().toString()+" S:"+VmosCount.getsStaling().toString(), Toast.LENGTH_LONG).show();
 	}
 	
 

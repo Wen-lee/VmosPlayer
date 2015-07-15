@@ -28,31 +28,34 @@ public final class R {
     public static final class drawable {
         public static final int black_vmos=0x7f020000;
         public static final int ic_launcher=0x7f020001;
-        public static final int mediacontroller_button=0x7f020002;
-        public static final int mediacontroller_pause=0x7f020003;
-        public static final int mediacontroller_play=0x7f020004;
-        public static final int mediacontroller_screen_fit=0x7f020005;
-        public static final int mediacontroller_screen_size=0x7f020006;
-        public static final int mediacontroller_sreen_size_100=0x7f020007;
-        public static final int mediacontroller_sreen_size_crop=0x7f020008;
-        public static final int scrubber_control_disabled_holo=0x7f020009;
-        public static final int scrubber_control_focused_holo=0x7f02000a;
-        public static final int scrubber_control_normal_holo=0x7f02000b;
-        public static final int scrubber_control_pressed_holo=0x7f02000c;
-        public static final int scrubber_control_selector_holo=0x7f02000d;
-        public static final int scrubber_primary_holo=0x7f02000e;
-        public static final int scrubber_progress_horizontal_holo_dark=0x7f02000f;
-        public static final int scrubber_secondary_holo=0x7f020010;
-        public static final int scrubber_track_holo_dark=0x7f020011;
+        public static final int ic_launcher_old=0x7f020002;
+        public static final int mediacontroller_button=0x7f020003;
+        public static final int mediacontroller_pause=0x7f020004;
+        public static final int mediacontroller_play=0x7f020005;
+        public static final int mediacontroller_screen_fit=0x7f020006;
+        public static final int mediacontroller_screen_size=0x7f020007;
+        public static final int mediacontroller_sreen_size_100=0x7f020008;
+        public static final int mediacontroller_sreen_size_crop=0x7f020009;
+        public static final int scrubber_control_disabled_holo=0x7f02000a;
+        public static final int scrubber_control_focused_holo=0x7f02000b;
+        public static final int scrubber_control_normal_holo=0x7f02000c;
+        public static final int scrubber_control_pressed_holo=0x7f02000d;
+        public static final int scrubber_control_selector_holo=0x7f02000e;
+        public static final int scrubber_primary_holo=0x7f02000f;
+        public static final int scrubber_progress_horizontal_holo_dark=0x7f020010;
+        public static final int scrubber_secondary_holo=0x7f020011;
+        public static final int scrubber_track_holo_dark=0x7f020012;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0030;
+        public static final int action_settings=0x7f0a0034;
         public static final int bit_rate=0x7f0a000d;
         public static final int bit_rate_v=0x7f0a000e;
         public static final int buffer=0x7f0a001b;
         public static final int button1=0x7f0a002d;
-        public static final int button_hls=0x7f0a002f;
-        public static final int button_hpd=0x7f0a002e;
+        public static final int button_hls=0x7f0a0031;
+        public static final int button_hls2=0x7f0a0032;
+        public static final int button_hls3=0x7f0a0033;
+        public static final int button_hpd=0x7f0a0030;
         public static final int dd=0x7f0a0018;
         public static final int download_rate=0x7f0a0029;
         public static final int initial_time=0x7f0a0013;
@@ -81,6 +84,8 @@ public final class R {
         public static final int surface_view=0x7f0a0019;
         public static final int textView=0x7f0a0000;
         public static final int url=0x7f0a002b;
+        public static final int urledit=0x7f0a002e;
+        public static final int urlsure=0x7f0a002f;
         public static final int veiw_bit_rate=0x7f0a001e;
         public static final int veiw_bit_rate_v=0x7f0a001f;
         public static final int veiw_initial_time=0x7f0a0024;
@@ -116,23 +121,23 @@ public final class R {
         public static final int test_cbr=0x7f040001;
     }
     public static final class string {
-        public static final int VideoView_error_button=0x7f07001e;
-        public static final int VideoView_error_text_invalid_progressive_playback=0x7f07001c;
-        public static final int VideoView_error_text_unknown=0x7f07001d;
-        public static final int VideoView_error_title=0x7f07001b;
+        public static final int VideoView_error_button=0x7f070020;
+        public static final int VideoView_error_text_invalid_progressive_playback=0x7f07001e;
+        public static final int VideoView_error_text_unknown=0x7f07001f;
+        public static final int VideoView_error_title=0x7f07001d;
         public static final int action_settings=0x7f070007;
         public static final int local_audio=0x7f070004;
         public static final int local_video=0x7f070001;
         public static final int local_video_setsurface=0x7f070002;
-        public static final int mediacontroller_play_pause=0x7f07001f;
+        public static final int mediacontroller_play_pause=0x7f070021;
         public static final int openvideo1=0x7f07000f;
         public static final int openvideo2=0x7f070010;
-        public static final int permission_group_tools_description=0x7f070016;
-        public static final int permission_group_tools_label=0x7f070015;
-        public static final int permission_receive_messages_description=0x7f070018;
-        public static final int permission_receive_messages_label=0x7f070017;
-        public static final int permission_write_providers_description=0x7f07001a;
-        public static final int permission_write_providers_label=0x7f070019;
+        public static final int permission_group_tools_description=0x7f070018;
+        public static final int permission_group_tools_label=0x7f070017;
+        public static final int permission_receive_messages_description=0x7f07001a;
+        public static final int permission_receive_messages_label=0x7f070019;
+        public static final int permission_write_providers_description=0x7f07001c;
+        public static final int permission_write_providers_label=0x7f07001b;
         public static final int res_audio=0x7f070005;
         public static final int stream_video=0x7f070003;
         public static final int subtitle1=0x7f070008;
@@ -144,9 +149,11 @@ public final class R {
         public static final int title_activity_video_subtitle_list=0x7f07000c;
         public static final int title_activity_video_view_subtitle=0x7f07000b;
         public static final int vitamio_demo_name=0x7f070000;
-        public static final int vitamio_init_decoders=0x7f070014;
-        public static final int vitamio_library_app_name=0x7f070013;
-        public static final int vmoshls=0x7f070012;
+        public static final int vitamio_init_decoders=0x7f070016;
+        public static final int vitamio_library_app_name=0x7f070015;
+        public static final int vmoshls1=0x7f070012;
+        public static final int vmoshls2=0x7f070013;
+        public static final int vmoshls3=0x7f070014;
         public static final int vmoshpd=0x7f070011;
     }
     public static final class style {

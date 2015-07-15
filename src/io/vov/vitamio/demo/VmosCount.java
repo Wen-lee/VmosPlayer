@@ -1,5 +1,6 @@
 package io.vov.vitamio.demo;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class VmosCount {
@@ -22,7 +23,8 @@ public class VmosCount {
 	    
 	    private static Double durarion = 0.0;
 	    
-	    private static int videotype = 0;  // 1 for hpd, 2 for hls
+	    private static int videotype = 2;  // 1 for hpd, 2 for hls, 3 for url
+	    private static String videpath = "";
 	    
 	    public static Long getPretime() {  
 	        return pre_time;  
@@ -138,6 +140,13 @@ public class VmosCount {
 	    	VmosCount.videotype = a;  
 	    } 
 	    
+	    public static String getvideopath() {  
+	        return videpath;  
+	    }  
+	      
+	    public static void setvideopath(String a) {  
+	    	VmosCount.videpath = a;  
+	    } 
 /*    
 	    public static Double getVmos_num() {
 	    	vmos_num = 5*(0.092*ini_time.doubleValue() + 0.108*kadun_time.doubleValue())/1000;
@@ -157,8 +166,9 @@ public class VmosCount {
 	    	double p2 = 0.27;
 	    	
 	    	vmos_num = quality*((1/(5*(p1 + p2)))*(p1*loading + p2*stalling));
-	    	DecimalFormat  df   = new DecimalFormat("######0.000"); 
-	    	df.format(vmos_num);
+	    	
+	    	BigDecimal   b   =   new   BigDecimal(vmos_num);  
+	    	vmos_num  =   b.setScale(4,BigDecimal.ROUND_HALF_UP).doubleValue();  //保留4位小数
 	        return vmos_num;  
 	    }  
 	    
@@ -210,19 +220,19 @@ public class VmosCount {
 	    
 	    public static Double getsStaling() {
 	    	Double sStaling;
-	    	Double buffertime;
+	    	Double kadunbuffertime;
 	    	Double duration= getDurarion();
 	    	Double buff_percent;
 	    	
-	    	buffertime = getBuffertime().doubleValue();
+	    	kadunbuffertime = getKaduntime().doubleValue();
 	    	
 	    	if(duration == 0.0){
 	    		sStaling = 5.0;
 	    		return sStaling;
 	    	}
-	    	buff_percent = buffertime/duration;
+	    	buff_percent = kadunbuffertime/duration;
 	    	
-	    	if(buff_percent == 0.0){ //
+	    	if(buff_percent == 0){ //
 	    		sStaling = 5.0;
 	    	}else if(buff_percent > 0.0 && buff_percent <= 0.05){ // 
 	    		sStaling = 4.0;

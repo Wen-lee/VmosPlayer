@@ -28,7 +28,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="47dip"
+          android:layout_marginTop="52dip"
           android:layout_marginLeft="15dip"
           android:text="分辨率:"
           android:background="@drawable/black_vmos" />
@@ -38,7 +38,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="47dip"
+          android:layout_marginTop="52dip"
           android:layout_marginLeft="95dip"
           android:text="0"
           android:background="@drawable/black_vmos" />
@@ -48,7 +48,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="47dip"
+          android:layout_marginTop="52dip"
           android:layout_marginLeft="200dip"
           android:text="码率Kbps:"
           android:background="@drawable/black_vmos" />
@@ -58,7 +58,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="47dip"
+          android:layout_marginTop="52dip"
           android:layout_marginLeft="275dip"
           android:text="0"
           android:background="@drawable/black_vmos" />
@@ -68,7 +68,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="24dip"
+          android:layout_marginTop="29dip"
           android:layout_marginLeft="15dip"
           android:text="卡顿次数:"
           android:background="@drawable/black_vmos" />
@@ -78,7 +78,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="24dip"
+          android:layout_marginTop="29dip"
           android:layout_marginLeft="95dip"
           android:text="0"
           android:background="@drawable/black_vmos" />
@@ -88,7 +88,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="24dip"
+          android:layout_marginTop="29dip"
           android:layout_marginLeft="200dip"
           android:text="卡顿时延:"
           android:background="@drawable/black_vmos" />
@@ -98,7 +98,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="24dip"
+          android:layout_marginTop="29dip"
           android:layout_marginLeft="275dip"
           android:text="0"
           android:background="@drawable/black_vmos" />
@@ -108,7 +108,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="1dip"
+          android:layout_marginTop="6dip"
           android:layout_marginLeft="15dip"
           android:text="初始时延:"
           android:background="@drawable/black_vmos" />
@@ -118,7 +118,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="1dip"
+          android:layout_marginTop="6dip"
           android:layout_marginLeft="95dip"
           android:text="0"
           android:background="@drawable/black_vmos" />
@@ -129,9 +129,9 @@
             android:layout_height="22dp"
             android:layout_gravity="top"
             android:layout_marginLeft="200dip"
-            android:layout_marginTop="1dip"
-            android:background="@drawable/black_vmos"
+            android:layout_marginTop="6dip"
             android:marqueeRepeatLimit="marquee_forever"
+            android:background="@drawable/black_vmos"
             android:singleLine="true"
             android:text="Vmos:" />
         
@@ -140,7 +140,7 @@
           android:layout_height="wrap_content"   
           android:layout_gravity="top" android:singleLine="true"
           android:marqueeRepeatLimit="marquee_forever"
-          android:layout_marginTop="1dip"
+          android:layout_marginTop="6dip"
           android:layout_marginLeft="275dip"
           android:text="0"
           android:background="@drawable/black_vmos" />

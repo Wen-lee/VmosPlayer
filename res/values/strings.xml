@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="vitamio_demo_name">VmosPlayer</string>
+    <string name="vitamio_demo_name">TVEE Player</string>
 	<string name="local_video">Play Video from Local File</string>
 	<string name="local_video_setsurface">Play Video use setSurface</string>
     <string name="stream_video">Play Streaming Video</string>
@@ -14,14 +14,16 @@
     <string name="title_activity_media_player_subtitle">MediaPlayerSubtitle</string>
     <string name="title_activity_video_view_subtitle">VideoViewSubtitle</string>
     <string name="title_activity_video_subtitle_list">VideoSubtitleList</string>
-    <string name="title_activity_video_buffer">VideoViewBuffer</string>
+    <string name="title_activity_video_buffer">VideoView</string>
     <string name="title_activity_VmosSet">VmosSet</string>
     
     <string name="openvideo1">Open Video1</string>
     <string name="openvideo2">Open Video2</string>
     
-    <string name="vmoshpd">HPD</string>
-    <string name="vmoshls">HLS</string>
+    <string name="vmoshpd">内置视频HPD</string>
+    <string name="vmoshls1">内置视频HLS_01</string>
+    <string name="vmoshls2">内置视频HLS_02</string>
+    <string name="vmoshls3">内置视频HLS_03</string>
     
     <string name="vitamio_library_app_name">VitamioLibrary</string>
     <string name="vitamio_init_decoders">Initializing decoders…</string>
