@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="vitamio_demo_name">Video Inspector</string>
+    <string name="vitamio_demo_name">VideoInspector</string>
     <string name="local_video">Play Video from Local File</string>
     <string name="local_video_setsurface">Play Video use setSurface</string>
     <string name="stream_video">Play Streaming Video</string>
@@ -14,8 +14,8 @@
     <string name="title_activity_media_player_subtitle">MediaPlayerSubtitle</string>
     <string name="title_activity_video_view_subtitle">VideoViewSubtitle</string>
     <string name="title_activity_video_subtitle_list">VideoSubtitleList</string>
-    <string name="title_activity_video_buffer">VideoView</string>
-    <string name="title_activity_VmosSet">VmosSet</string>
+    <string name="title_activity_video_buffer">视频播放</string>
+    <string name="title_activity_VmosSet">视频设置</string>
     
     <string name="openvideo1">Open Video1</string>
     <string name="openvideo2">Open Video2</string>
