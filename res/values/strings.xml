@@ -16,6 +16,7 @@
     <string name="title_activity_video_subtitle_list">VideoSubtitleList</string>
     <string name="title_activity_video_buffer">视频播放</string>
     <string name="title_activity_VmosSet">视频设置</string>
+    <string name="title_activity_WebViewDemo">网页评估</string>
     
     <string name="openvideo1">Open Video1</string>
     <string name="openvideo2">Open Video2</string>

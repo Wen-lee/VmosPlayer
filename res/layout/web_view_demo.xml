@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+   <!--    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@drawable/ic_line"
+        android:drawSelectorOnTop="false"
+        android:fadingEdge="none"
+        android:listSelector="#e8e8e8"
+        android:scrollbars="none" />
+        
+       <include layout="@layout/common_loading" /> 
+     -->  
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone" >
+    </WebView>
+
+
+    
+    
+     <EditText
+        android:id="@+id/weburledit"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="78dip"
+        android:hint="网页的URL"
+        android:background="@drawable/black_vmos"
+       />
+     
+     <Button
+        android:id="@+id/weburlsure"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="47dip"
+        
+        android:text="点击确认网页地址"
+        android:background="@drawable/black_vmos"
+         />
+
+    <TextView
+        android:id="@+id/web_load_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="24dip"
+        android:layout_marginLeft="0dip"
+        android:background="@drawable/black_vmos"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="缓冲时延(ms):" />
+
+          /> 
+     <TextView android:id="@+id/web_load_time_v" 
+          android:layout_width="match_parent" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom"
+          android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="24dip"
+          android:layout_marginLeft="150dip"
+          android:background="@drawable/black_vmos"
+          android:text="0"/>
+     
+     <TextView android:id="@+id/web_content" 
+          android:layout_width="match_parent" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom"
+          android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="1dip"
+          android:layout_marginLeft="0dip"
+          android:background="@drawable/black_vmos"
+          android:text="网页大小(Byte):"/>
+     
+      <TextView android:id="@+id/web_content_v" 
+          android:layout_width="match_parent" 
+          android:layout_height="wrap_content"   
+          android:layout_gravity="bottom"
+          android:singleLine="true"
+          android:marqueeRepeatLimit="marquee_forever"
+          android:layout_marginBottom="1dip"
+          android:layout_marginLeft="150dip"
+          android:background="@drawable/black_vmos"
+          android:text="0"/>
+       
+</FrameLayout>

@@ -53,6 +53,8 @@ public class VitamioListActivity extends ListActivity {
 		//addItem(myData, "MediaPlayer", new Intent(this, MediaPlayerDemo.class));
 		addItem(myData, " ”∆µ≤•∑≈", new Intent(this, VideoViewBuffer.class));
 		addItem(myData, " ”∆µ…Ë÷√", new Intent(this, VmosSet.class));
+		addItem(myData, "Õ¯“≥∆¿π¿", new Intent(this, WebViewDemo.class));
+		
 		return myData;
 	}
 

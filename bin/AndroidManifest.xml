@@ -78,6 +78,10 @@
             android:name=".VmosSet"
             android:label="@string/title_activity_VmosSet" >
         </activity>
+        <activity
+            android:name=".WebViewDemo"
+            android:label="@string/title_activity_WebViewDemo" >
+        </activity>
         
     </application>
 
